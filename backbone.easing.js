@@ -89,7 +89,7 @@
 			var easingFunc = this.data.easing;
 			var time = ( this.data.end - now ) / (this.options.duration * 1000);
 
-			var pos = Math.round( end * (1 - easingFunc( time ) ) );
+			var pos = Math.round( start + ( end - start ) * (1 -easingFunc( time ) ) );
 
 			this.transitionPos( pos );
 
