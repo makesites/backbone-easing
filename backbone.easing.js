@@ -89,10 +89,10 @@
 			// condition #2: if the position has changed by another "force"
 			if( data.pos && data.pos !== this.transitionPos() ) return this.transitionEnd();
 
-			var start = this.data.startPos;
-			var end = this.data.endPos;
-			var easingFunc = this.data.easing;
-			var time = ( this.data.end - now ) / (this.options.duration * 1000);
+			var start = data.startPos;
+			var end = data.endPos;
+			var easingFunc = data.easing;
+			var time = ( data.end - now ) / (this.options.duration * 1000);
 
 			var pos = Math.round( start + ( end - start ) * (1 -easingFunc( time ) ) );
 
