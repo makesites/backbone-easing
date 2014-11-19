@@ -51,7 +51,7 @@ _.mixin({
 		el : 'body',
 
 		options : {
-			targetEl: "body", // the element that will be animated
+			targetEl: window, // the element that will be animated
 			ease: "easeFrom",
 			duration: 2 // in seconds
 		},
@@ -71,7 +71,9 @@ _.mixin({
 			this.options = _.extend({}, this.options, options );
 			this.tick = new Tick();
 			// get the target element
-			this.targetEl = $( this.options.targetEl )[0];
+			if( !this.targetEl ) {
+				this.targetEl = (typeof this.options.targetEl == "string" )? $( this.options.targetEl )[0] : this.options.targetEl;
+			}
 
 			return View.prototype.initialize.call( this, options );
 		},
@@ -155,10 +157,11 @@ _.mixin({
 // --------------------------------------------------
 (function (name, definition) {
   /*global define module*/
-  if (typeof define == 'function') define(definition);
-  else if (typeof module != 'undefined') module.exports = definition;
-  else this[name] = definition;
-}('easing', {
+  if (typeof define == 'function') define(name, definition);
+  else if (typeof module != 'undefined') module.exports = definition();
+  else this[name] = definition();
+}('easing', function(){
+	return {
   easeInQuad: function(pos) {
     return Math.pow(pos, 2);
   },
@@ -335,6 +338,7 @@ _.mixin({
   easeTo: function(pos) {
     return Math.pow(pos,0.25);
   }
+}
 }));
 
 /* Tick.js
