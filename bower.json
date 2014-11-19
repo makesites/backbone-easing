@@ -1,7 +1,8 @@
 {
 	"name": "backbone.easing",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "A View that has an interface for easing.js tweens",
+	"author": "makesites",
 	"authors": [
 		"Makis Tracend <makis@makesit.es>"
 	],
@@ -12,10 +13,7 @@
 		"transition",
 		"tween"
 	],
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/makesites/backbone-easing.git"
-	},
+	"repository" : "http://github.com/makesites/backbone-easing",
 	"main": ["./build/backbone.easing-min.js"],
 	"ignore": [
 		"node_modules"
