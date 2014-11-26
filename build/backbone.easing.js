@@ -2,7 +2,7 @@
  * @name backbone.easing
  * A View that has an interface for easing.js tweens
  *
- * Version: 0.2.1 (Wed, 19 Nov 2014 01:43:51 GMT)
+ * Version: 0.2.2 (Wed, 26 Nov 2014 02:33:22 GMT)
  * Source: http://github.com/makesites/backbone-easing
  *
  * @author makesites
@@ -161,7 +161,7 @@ _.mixin({
   else if (typeof module != 'undefined') module.exports = definition();
   else this[name] = definition();
 }('easing', function(){
-	return {
+return {
   easeInQuad: function(pos) {
     return Math.pow(pos, 2);
   },
@@ -338,7 +338,7 @@ _.mixin({
   easeTo: function(pos) {
     return Math.pow(pos,0.25);
   }
-}
+};
 }));
 
 /* Tick.js
