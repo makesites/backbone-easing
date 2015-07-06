@@ -39,7 +39,7 @@ var name = package.name;
 // - list files in the lib folder
 var src = libFiles();
 // add components
-src.push('bower_components/easing/easing.js', 'bower_components/tick/tick.js');
+src.push('deps/easing.js', 'deps/tick.js');
 
 // - concatinate all files
 concat({
