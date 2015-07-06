@@ -2,7 +2,7 @@
  * @name backbone.easing
  * A View that has an interface for easing.js tweens
  *
- * Version: 0.2.2 (Sat, 27 Dec 2014 11:47:53 GMT)
+ * Version: 0.2.2 (Mon, 06 Jul 2015 11:08:11 GMT)
  * Source: http://github.com/makesites/backbone-easing
  *
  * @author makesites
@@ -20,7 +20,7 @@
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
 		var deps = ['jquery', 'underscore', 'backbone']; // condition when backbone.app is part of the array?
-		define(deps, lib);
+		define('backbone.easing', deps, lib);
 	} else if ( typeof module === "object" && module && typeof module.exports === "object" ){
 		// Expose as module.exports in loaders that implement CommonJS module pattern.
 		module.exports = lib;
@@ -141,10 +141,16 @@ _.mixin({
 			// remove transition
 			this.tick.remove( this.transition );
 			// can you stop tick.js?
+		},
+
+		// expose easing methods
+		tween: function( key ){
+			return easing[key];
 		}
 
 	});
 
+// MODIFIED!
 // --------------------------------------------------
 // easing.js v0.5.4
 // Generic set of easing functions with AMD support
@@ -160,7 +166,8 @@ _.mixin({
   /*global define module*/
   if (typeof define == 'function') define(name, definition);
   else if (typeof module != 'undefined') module.exports = definition();
-  else this[name] = definition();
+  // always expose methods locally
+  this[name] = definition();
 }('easing', function(){
 return {
   easeInQuad: function(pos) {
